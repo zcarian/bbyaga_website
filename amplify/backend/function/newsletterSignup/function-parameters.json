@@ -1,0 +1,10 @@
+{
+  "permissions": {},
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "newsletterTableName",
+      "environmentVariableName": "NEWSLETTER_TABLE_NAME"
+    }
+  ]
+}
