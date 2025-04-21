@@ -8,19 +8,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Handmade Clothes | Unique Fashion Pieces",
+  title:
+    "Miss Yaga – Bold, Queer-Inspired Fashion That Speaks Loud & Loves Hard",
   description:
-    "Discover unique, handmade clothing pieces that combine style, comfort, and craftsmanship. Each piece tells a story of dedication and passion for quality fashion.",
+    "Miss Yaga creates unapologetically bold, queer-inspired fashion for outcasts, dreamers, and lovers. Based in Berlin, her maximalist designs spark joy, rebellion, and self-expression.",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className={inter.className}>
-      <body>{children}</body>
+    <html lang="en">
+      <body className={`${inter.className} min-h-screen`}>
+        <div className="fixed inset-0 -z-10 overflow-hidden">
+          <img
+            src="https://bbyaga-photos.s3.eu-north-1.amazonaws.com/1.png"
+            alt="Background"
+            className="w-full h-[120%] object-cover object-top -translate-y-10"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10">{children}</div>
+      </body>
     </html>
   );
 }

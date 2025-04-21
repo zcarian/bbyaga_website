@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Tile from "./Tile";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -42,41 +43,45 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="py-4 px-4">
-      <div className="max-w-2xl mx-auto text-center bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Stay Updated</h2>
-        <p className="text-gray-600 mb-8">
-          Great things ahead, be sure to subscribe.
-        </p>
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col sm:flex-row gap-4"
-        >
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-            required
-          />
-          <button
-            type="submit"
-            disabled={status === "loading"}
-            className="px-6 py-3 bg-pink-500 text-white font-medium rounded-lg hover:bg-pink-600 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {status === "loading" ? "Subscribing..." : "Subscribe"}
-          </button>
-        </form>
-        {message && (
-          <p
-            className={`mt-4 ${
-              status === "error" ? "text-red-500" : "text-green-500"
-            }`}
-          >
-            {message}
+    <div className="py-8 px-4">
+      <div className="max-w-2xl mx-auto text-center">
+        <Tile>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Stay Updated
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Great things ahead, be sure to subscribe.
           </p>
-        )}
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              required
+            />
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="px-6 py-3 bg-pink-500 text-white font-medium rounded-lg hover:bg-pink-600 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status === "loading" ? "Subscribing..." : "Subscribe"}
+            </button>
+          </form>
+          {message && (
+            <p
+              className={`mt-4 ${
+                status === "error" ? "text-red-500" : "text-green-500"
+              }`}
+            >
+              {message}
+            </p>
+          )}
+        </Tile>
       </div>
     </div>
   );
