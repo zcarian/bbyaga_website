@@ -1,43 +1,36 @@
 import Image from "next/image";
 import Tile from "./Tile";
+import AnimatedHeroText from "./AnimatedHeroText";
 
-const Hero = () => {
+const Hero = ({ isVisible }: { isVisible: boolean }) => {
   return (
-    <div className="flex flex-col items-center px-4 py-8">
+    <div className="flex flex-col items-center px-4 py-4">
       <div className="w-full max-w-4xl mx-auto text-center">
         <Tile>
           <div className="mb-4">
-            <div className="max-w-2xl mx-auto h-50">
+            <div className="max-w-2xl mx-auto">
               <Image
-                src="/logo.svg"
+                src="/Rectangle.svg"
                 alt="Handmade Clothes Logo"
                 width={300}
                 height={100}
-                className="w-full h-full object-contain"
+                // className="w-full h-full object-contain max-h-50 fill-red-800 "
+                className="w-full h-full object-contain filter "
                 priority
               />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-red-800 mt-6">
             Is about being unapologetically yourself.
           </h1>
-          <p className="text-l text-gray-600 max-w-2xl mx-auto mb-8">
-            People call u names? Miss Yaga encourages u to just own it and
-            embrace each of your quirks. I get the inspiration from my queer,
-            Berlin community of outcasts and weirdos—filled with love, rage, and
-            the courage to keep on fighting for equality and understanding. My
-            maximalist designs are for people who want to make a statement, but
-            whose heart stays open. They know who they are and are not afraid to
-            express it. And when the world is in a dark, loveless hole—like
-            nowadays—I want to deliver some colour and love to everyone&apos;s
-            heartspace. A sense of belonging, and a little dopamine boost for
-            all.
-          </p>
+
+          <AnimatedHeroText isVisible={isVisible} />
+
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-pink-500 text-white font-medium rounded-lg hover:bg-pink-600 transition-all transform hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-red-800 text-fuchsia-300/60 font-medium rounded-lg hover:bg-red-900 transition-all transform hover:scale-105"
           >
             <svg
               className="w-5 h-5"
@@ -51,7 +44,7 @@ const Hero = () => {
                 clipRule="evenodd"
               />
             </svg>
-            Follow on Instagram
+            Follow me on Instagram
           </a>
         </Tile>
       </div>

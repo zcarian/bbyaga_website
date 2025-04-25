@@ -8,38 +8,31 @@ const AutoHideHero = () => {
   const isHoveredRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check if device is mobile
+  // Detect mobile
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Initial check
     checkIfMobile();
-
-    // Add event listener for window resize
     window.addEventListener("resize", checkIfMobile);
-
-    return () => {
-      window.removeEventListener("resize", checkIfMobile);
-    };
+    return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
-  // Auto-hide timer
+  // Auto-hide after 5s (desktop only)
   useEffect(() => {
-    // Only apply auto-hide on desktop
     if (isMobile) return;
 
     const timer = setTimeout(() => {
       if (!isHoveredRef.current) {
         setIsVisible(false);
       }
-    }, 5000); // Hide after 5 seconds
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [isMobile]);
 
-  // Show on hover
+  // Desktop hover events
   const handleMouseEnter = () => {
     if (!isMobile) {
       isHoveredRef.current = true;
@@ -50,7 +43,6 @@ const AutoHideHero = () => {
   const handleMouseLeave = () => {
     if (!isMobile) {
       isHoveredRef.current = false;
-      // Add a small delay before hiding again
       setTimeout(() => {
         if (!isHoveredRef.current) {
           setIsVisible(false);
@@ -59,20 +51,23 @@ const AutoHideHero = () => {
     }
   };
 
-  // For mobile, always show the hero
-  if (isMobile) {
-    return <Hero />;
-  }
+  // Mobile tap toggles visibility
+  const handleTap = () => {
+    if (isMobile) {
+      setIsVisible((prev) => !prev);
+    }
+  };
 
   return (
     <div
-      className={`transition-all duration-500 ease-in-out ${
+      className={`transition-opacity duration-300 ease-in-out ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleTap}
     >
-      <Hero />
+      <Hero isVisible={isVisible} />
     </div>
   );
 };
