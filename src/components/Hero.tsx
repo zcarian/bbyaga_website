@@ -20,7 +20,7 @@ const Hero = ({ isVisible }: { isVisible: boolean }) => {
               />
             </div>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-red-800 mt-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-red-700 mt-6">
             Is about being unapologetically yourself.
           </h1>
 
@@ -30,7 +30,7 @@ const Hero = ({ isVisible }: { isVisible: boolean }) => {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-red-800 text-fuchsia-300/60 font-medium rounded-lg hover:bg-red-900 transition-all transform hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-red-700 text-fuchsia-300/60 font-medium rounded-lg hover:bg-red-900 transition-all transform hover:scale-105"
           >
             <svg
               className="w-5 h-5"

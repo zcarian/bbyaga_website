@@ -46,8 +46,8 @@ const Newsletter = () => {
     <div className="py-4 px-4">
       <div className="max-w-2xl mx-auto text-center">
         <Tile>
-          <h2 className="text-3xl font-bold text-red-800 mb-4">Stay Updated</h2>
-          <p className="text-red-800 mb-8">
+          <h2 className="text-3xl font-bold text-red-700 mb-4">Stay Updated</h2>
+          <p className="text-red-700 mb-8">
             Great things ahead, be sure to subscribe.
           </p>
           <form
@@ -59,13 +59,13 @@ const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg border border-red-800 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              className="flex-1 px-4 py-3 rounded-lg border border-red-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
               required
             />
             <button
               type="submit"
               disabled={status === "loading"}
-              className="px-6 py-3 bg-red-800 text-fuchsia-300/60 font-medium rounded-lg hover:bg-red-900 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 bg-red-700 text-fuchsia-300/60 font-medium rounded-lg hover:bg-red-800 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {status === "loading" ? "Subscribing..." : "Subscribe"}
             </button>

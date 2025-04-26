@@ -54,7 +54,7 @@ export default function AnimatedHeroText({
   };
 
   return (
-    <div className="relative text-red-800">
+    <div className="relative text-red-700">
       <Swiper {...swiperProps}>
         {sentences.map((text, i) => (
           <SwiperSlide key={i}>

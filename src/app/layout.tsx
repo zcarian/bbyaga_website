@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen`}>
-        <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="fixed inset-0 z-0 overflow-hidden">
           <img
             src="https://bbyaga-photos.s3.eu-north-1.amazonaws.com/1.png"
             alt="Background"
