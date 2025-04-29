@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,10 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Miss Yaga – Bold, Queer-Inspired Fashion That Speaks Loud & Loves Hard",
+  title: "BBYAGA – Bold, Queer-Inspired Fashion That Speaks Loud & Loves Hard",
   description:
-    "Miss Yaga creates unapologetically bold, queer-inspired fashion for outcasts, dreamers, and lovers. Based in Berlin, her maximalist designs spark joy, rebellion, and self-expression.",
+    "BBYAGA creates unapologetically bold, queer-inspired fashion for outcasts, dreamers, and lovers. Based in Berlin, her maximalist designs spark joy, rebellion, and self-expression.",
 };
 
 export default function RootLayout({
@@ -22,11 +22,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen`}>
-        <div className="fixed inset-0 z-0 overflow-hidden">
-          <img
-            src="https://bbyaga-photos.s3.eu-north-1.amazonaws.com/1.png"
+        <div className="fixed top-0 left-0 w-full h-[120vh] -z-10 overflow-hidden">
+          {/* <img
+            src="https://bbyaga-photos.s3.eu-north-1.amazonaws.com/1.jpg"
             alt="Background"
             className="w-full h-[120%] object-cover object-top -translate-y-10"
+          /> */}
+          <Image
+            src="https://bbyaga-photos.s3.eu-north-1.amazonaws.com/1.jpg"
+            alt="Background"
+            fill
+            className="object-cover object-top -translate-y-10"
           />
         </div>
 
