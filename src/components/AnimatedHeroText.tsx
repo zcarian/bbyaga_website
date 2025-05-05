@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+// import { Autoplay } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 
@@ -21,13 +21,35 @@ export default function AnimatedHeroText({
   const swiperRef = useRef<SwiperType | null>(null);
 
   useEffect(() => {
-    if (swiperRef.current && swiperRef.current.autoplay) {
-      if (isVisible) {
-        swiperRef.current.autoplay.start();
-      } else {
-        swiperRef.current.autoplay.stop();
-      }
-    }
+    if (!isVisible || !swiperRef.current) return;
+
+    let currentIndex = swiperRef.current.realIndex;
+
+    const getDelayForText = (text: string) => {
+      const words = text.split(" ").length;
+      const readingSpeedWPM = 200; // words per minute
+      const readingTimeMs = (words / readingSpeedWPM) * 60 * 1000;
+      return Math.max(readingTimeMs, 2500); // minimum 2.5 seconds
+    };
+
+    let timer: ReturnType<typeof setTimeout>;
+
+    const scheduleNextSlide = () => {
+      const text = sentences[currentIndex];
+      const delay = getDelayForText(text);
+
+      timer = setTimeout(() => {
+        if (swiperRef.current) {
+          swiperRef.current.slideNext();
+          currentIndex = swiperRef.current.realIndex;
+          scheduleNextSlide();
+        }
+      }, delay);
+    };
+
+    scheduleNextSlide();
+
+    return () => clearTimeout(timer); // cleanup on unmount or visibility change
   }, [isVisible]);
 
   const swiperProps = {
@@ -38,19 +60,8 @@ export default function AnimatedHeroText({
     onSwiper: (swiper: SwiperType) => {
       swiperRef.current = swiper;
     },
-    ...(isVisible
-      ? {
-          modules: [Autoplay],
-          autoplay: {
-            delay: 3500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          },
-        }
-      : {
-          modules: [],
-          autoplay: false,
-        }),
+    modules: [], // remove Autoplay
+    autoplay: false,
   };
 
   return (
