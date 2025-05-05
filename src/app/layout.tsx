@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen`}>
+      <body className={`${inter.className} min-h-screen bg-[#63d7b8]`}>
         <div className="fixed top-0 left-0 w-full h-[120vh] -z-10 overflow-hidden">
           {/* <img
             src="https://bbyaga-photos.s3.eu-north-1.amazonaws.com/1.jpg"
