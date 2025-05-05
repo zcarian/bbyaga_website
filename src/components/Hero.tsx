@@ -2,11 +2,24 @@ import Image from "next/image";
 import Tile from "./Tile";
 import AnimatedHeroText from "./AnimatedHeroText";
 
-const Hero = ({ isVisible }: { isVisible: boolean }) => {
+const Hero = ({
+  isVisible,
+  isMobile,
+  hasTapped,
+}: {
+  isVisible: boolean;
+  isMobile: boolean;
+  hasTapped: boolean;
+}) => {
   return (
     <div className="flex flex-col items-center px-4 py-4">
       <div className="w-full max-w-4xl mx-auto text-center">
         <Tile>
+          {isMobile && !hasTapped && (
+            <div className="absolute top-2 right-2 bg-fuchsia-300/30 text-red-800 text-xs px-3 py-1 rounded-full shadow-md">
+              Tap to hide
+            </div>
+          )}
           <div className="mb-4">
             <div className="max-w-2xl mx-auto">
               <Image
@@ -27,7 +40,7 @@ const Hero = ({ isVisible }: { isVisible: boolean }) => {
           <AnimatedHeroText isVisible={isVisible} />
 
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/___bbyaga___/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-red-700 text-fuchsia-300/60 font-medium rounded-lg hover:bg-red-900 transition-all transform hover:scale-105"
@@ -46,6 +59,15 @@ const Hero = ({ isVisible }: { isVisible: boolean }) => {
             </svg>
             Follow me on Instagram
           </a>
+          <p className="mt-4 text-sm text-red-700">
+            or contact me directly at{" "}
+            <a
+              href="mailto:zola@bbyaga.com"
+              className="underline hover:text-red-900"
+            >
+              zola@bbyaga.com
+            </a>
+          </p>
         </Tile>
       </div>
     </div>

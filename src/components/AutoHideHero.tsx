@@ -7,6 +7,7 @@ const AutoHideHero = () => {
   const [isVisible, setIsVisible] = useState(true);
   const isHoveredRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [hasTapped, setHasTapped] = useState(false);
 
   // Detect mobile
   useEffect(() => {
@@ -54,6 +55,7 @@ const AutoHideHero = () => {
   // Mobile tap toggles visibility
   const handleTap = () => {
     if (isMobile) {
+      if (!hasTapped) setHasTapped(true);
       setIsVisible((prev) => !prev);
     }
   };
@@ -67,7 +69,7 @@ const AutoHideHero = () => {
       onMouseLeave={handleMouseLeave}
       onClick={handleTap}
     >
-      <Hero isVisible={isVisible} />
+      <Hero isVisible={isVisible} isMobile={isMobile} hasTapped={hasTapped} />
     </div>
   );
 };
